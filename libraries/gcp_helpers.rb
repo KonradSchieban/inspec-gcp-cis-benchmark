@@ -35,7 +35,7 @@ module GcpHelpers
 
           # Loop/fetch/cache the names and locations of GKE clusters
           @gke_locations.each do |gke_location|
-            google_container_regional_clusters(project: gcp_project_id, location: gke_location).names.each do |gke_cluster|
+            google_container_clusters(project: gcp_project_id, location: gke_location).cluster_names.each do |gke_cluster|
               @cached_gke_clusters.push({:cluster_name => gke_cluster, :location => gke_location})
             end
           end
